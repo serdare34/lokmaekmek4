@@ -69,8 +69,16 @@
       font-size: 16px;
       font-weight: 700;
       cursor: pointer;
-      background: #222;
       color: white;
+      margin-top: 10px;
+    }
+
+    .copy {
+      background: #222;
+    }
+
+    .garanti {
+      background: #00844a;
     }
 
     button:active {
@@ -78,10 +86,17 @@
     }
 
     .message {
-      height: 22px;
+      min-height: 22px;
       margin-top: 12px;
       font-size: 14px;
       color: #555;
+    }
+
+    .info {
+      margin-top: 18px;
+      font-size: 13px;
+      color: #777;
+      line-height: 1.5;
     }
   </style>
 </head>
@@ -89,6 +104,7 @@
 <body>
 
   <div class="card">
+
     <h1>Lokma Ekmek Pasta 4</h1>
 
     <div class="name">
@@ -103,17 +119,27 @@
       TR47 0001 0009 6086 7432 3850 02
     </div>
 
-    <button onclick="copyIBAN()">
+    <button class="garanti" onclick="openGaranti()">
+      Garanti Mobil'i Aç
+    </button>
+
+    <button class="copy" onclick="copyIBAN()">
       IBAN'ı Kopyala
     </button>
 
     <div class="message" id="message"></div>
+
+    <div class="info">
+      Garanti Mobil açılmazsa IBAN'ı kopyalayıp
+      bankanızın para transferi ekranından gönderebilirsiniz.
+    </div>
+
   </div>
 
   <script>
-    function copyIBAN() {
-      const iban = "TR470001000960867432385002";
+    const iban = "TR470001000960867432385002";
 
+    function copyIBAN() {
       navigator.clipboard.writeText(iban).then(() => {
         document.getElementById("message").textContent =
           "IBAN kopyalandı ✓";
@@ -121,6 +147,15 @@
         document.getElementById("message").textContent =
           "IBAN: " + iban;
       });
+    }
+
+    function openGaranti() {
+      copyIBAN();
+
+      setTimeout(() => {
+        window.location.href =
+          "https://www.garantibbva.com.tr/mobil-bankacilik";
+      }, 300);
     }
   </script>
 

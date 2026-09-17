@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lokma Ekmek Pasta 4</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: #f5f5f5;
+      color: #222;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 430px;
+      background: white;
+      border-radius: 22px;
+      padding: 30px 24px;
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.10);
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 27px;
+      font-weight: 750;
+    }
+
+    .name {
+      font-size: 18px;
+      margin-bottom: 28px;
+      color: #555;
+    }
+
+    .bank {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .iban-box {
+      background: #f3f3f3;
+      border-radius: 14px;
+      padding: 16px 12px;
+      margin-bottom: 16px;
+      font-size: 15px;
+      font-weight: 600;
+      word-break: break-all;
+      letter-spacing: 0.3px;
+    }
+
+    button {
+      width: 100%;
+      border: none;
+      border-radius: 13px;
+      padding: 15px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      background: #222;
+      color: white;
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+
+    .message {
+      height: 22px;
+      margin-top: 12px;
+      font-size: 14px;
+      color: #555;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <h1>Lokma Ekmek Pasta 4</h1>
+
+    <div class="name">
+      Doğan Şimşek
+    </div>
+
+    <div class="bank">
+      Ziraat Bankası
+    </div>
+
+    <div class="iban-box" id="iban">
+      TR47 0001 0009 6086 7432 3850 02
+    </div>
+
+    <button onclick="copyIBAN()">
+      IBAN'ı Kopyala
+    </button>
+
+    <div class="message" id="message"></div>
+  </div>
+
+  <script>
+    function copyIBAN() {
+      const iban = "TR470001000960867432385002";
+
+      navigator.clipboard.writeText(iban).then(() => {
+        document.getElementById("message").textContent =
+          "IBAN kopyalandı ✓";
+      }).catch(() => {
+        document.getElementById("message").textContent =
+          "IBAN: " + iban;
+      });
+    }
+  </script>
+
+</body>
+</html>
